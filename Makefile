@@ -60,6 +60,8 @@ endif
 # The rust stuff ends up in its own .text.... section, we need to copy it over
 
 clean:
+	$(MAKE) -C embed/ clean
+	rm -rf efi_test/
 	rm -f *.o
 	rm -f *.debug *.so *.efi *.efi.*
 	rm -f libembed.a

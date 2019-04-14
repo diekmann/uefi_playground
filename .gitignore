@@ -1,0 +1,6 @@
+efi_test/
+*.swp
+*.a
+*.o
+*.so
+shimx64.efi
