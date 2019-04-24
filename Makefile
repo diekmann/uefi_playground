@@ -9,7 +9,8 @@ EFI_INCLUDE	:= /usr/include/efi
 EFI_INCLUDES = -nostdinc -I$(EFI_INCLUDE) -I$(EFI_INCLUDE)/$(ARCH) -I$(EFI_INCLUDE)/protocol
 
 LIB_GCC = $(shell $(CC) -print-libgcc-file-name)
-EFI_LIBS = -lgnuefi $(LIB_GCC) -lefi
+# All the cool gnuefi helper functions are in -lefi, which we don't include since I want to handover to rust early.
+EFI_LIBS = -lgnuefi $(LIB_GCC)
 
 EFI_CRT_OBJS = $(EFI_PATH)/crt0-efi-$(ARCH).o
 EFI_LDS = elf_$(ARCH)_efi.lds
