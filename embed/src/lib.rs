@@ -30,7 +30,7 @@ macro_rules! wide {
             $(
                 $x as u16,
             )*
-			'\0' as u16];
+            '\0' as u16];
             tmp_str
         }
     };
@@ -47,7 +47,7 @@ pub extern fn rust_hello() {
     let s2 = wide!('H', 'e', 'l', 'l', 'o', ',', ' ', 'W', 'o', 'r', 'l', 'd', ',', ' ', 'f', 'r', 'o', 'm', ' ', 'R', 'u', 's', 't', '!','\r', '\n');
     unsafe{
         Output(s1.as_ptr());
-		Output(s2.as_ptr());
+        Output(s2.as_ptr());
         // This string will appear as utf8 string in the binary and only gets converted as runtime.
         Output(uefi_str("Hello, world, from rust with uefi_str\r\n\0").as_ptr());
     }
@@ -57,7 +57,7 @@ pub extern fn rust_hello() {
 
 #[panic_handler]
 fn panic_handler(_info: &core::panic::PanicInfo) -> ! {
-	//TODO
+    //TODO
     loop {
         unsafe {
             asm!("hlt" :::: "volatile");
